@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<p>
+									<!-- send user_id as param -->
+	<strong><%= link_to 'New TODO', new_list_path, {:userid => @user.id} %></strong>
+</p>
+
+<% if @user.list.length > 0 %>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Title</th>
+	      <th>Completed</th>
+	      <th>Due</th>
+	      <th colspan="4"></th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+		<% @user.list.each do |list| %>
+		  <tr>
+		    <td><%= list.title %></td>
+		    <td><%= list.completed  %></td>
+		    <td><%= list.due  %></td>
+	      <td><%= link_to 'edit', edit_list_path(list) %></td>
+	      <td><%= link_to 'delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    </tr>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
+<% else %>
+
+	<p> No TODOs yet! </p>
+<% end %>
+
+
+
