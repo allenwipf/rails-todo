@@ -16,15 +16,15 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', root_path %>
 
 <p>
-									<!-- send user_id as param -->
-	<strong><%= link_to 'New TODO', new_list_path, {:userid => @user.id} %></strong>
+	<%= button_to "New TODO", new_list_path(:test => 'hi'), :class=>"btn btn-info", :method => "get"%>
+
 </p>
 
 <% if @user.list.length > 0 %>
-	<table>
+	<table class="table table-striped table-bordered">
 	  <thead>
 	    <tr>
 	      <th>Title</th>
@@ -36,10 +36,11 @@
 
 	  <tbody>
 		<% @user.list.each do |list| %>
-		  <tr>
+		  <tr <%="class=completed" if list.completed == true %>>
+
 		    <td><%= list.title %></td>
 		    <td><%= list.completed  %></td>
-		    <td><%= list.due  %></td>
+		    <td><%= list.due.strftime("%m-%d-%Y @ %I:%M %p") %></td>
 	      <td><%= link_to 'edit', edit_list_path(list) %></td>
 	      <td><%= link_to 'delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	    </tr>

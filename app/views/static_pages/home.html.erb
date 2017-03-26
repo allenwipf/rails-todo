@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>Users</h1>
 
-<table>
+<table class="table table-striped table-bordered" >
   <thead>
     <tr>
       <th>Name</th>
@@ -13,12 +13,10 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
+      <tr class=''>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show Todos', user %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= button_to "New User", new_user_path, :class=>"btn btn-info", :method => "get"%>

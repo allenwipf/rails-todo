@@ -14,7 +14,8 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
-    @list = List.new
+    @params = params
+    @list = List.new 
   end
 
   # GET /lists/1/edit
@@ -24,6 +25,7 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
+    debugger
     @list = List.new(list_params)
     list_owner = "/users/#{@list.user_id}"
 
@@ -72,6 +74,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:title, :completed, :due, :user_id)
+      params.require(:list).permit(:title, :completed, :due, :user_id, :test)
     end
 end

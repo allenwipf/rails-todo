@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  <%=@params%>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -25,9 +25,13 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
+    <%= f.number_field :user_id%>
+  </div><br>
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:id] %>
+      <%= f.submit "Update Todo" %>
+    <% else %>
+      <%= f.submit "Schedule Todo" %>
+    <% end %>
   </div>
 <% end %>
