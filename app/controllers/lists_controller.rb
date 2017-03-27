@@ -25,7 +25,6 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    debugger
     @list = List.new(list_params)
     list_owner = "/users/#{@list.user_id}"
 

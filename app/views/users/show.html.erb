@@ -19,7 +19,7 @@
 <%= link_to 'Back', root_path %>
 
 <p>
-	<%= button_to "New TODO", new_list_path(:test => 'hi'), :class=>"btn btn-info", :method => "get"%>
+	<%= link_to "New TODO", new_list_path(user_id: @user.id), :class=>"btn btn-info", :method => "get"%>
 
 </p>
 
@@ -39,7 +39,7 @@
 		  <tr <%="class=completed" if list.completed == true %>>
 
 		    <td><%= list.title %></td>
-		    <td><%= list.completed  %></td>
+		    <td><%= list.completed %></td>
 		    <td><%= list.due.strftime("%m-%d-%Y @ %I:%M %p") %></td>
 	      <td><%= link_to 'edit', edit_list_path(list) %></td>
 	      <td><%= link_to 'delete', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>

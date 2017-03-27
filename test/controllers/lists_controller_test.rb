@@ -24,20 +24,20 @@ class ListsControllerTest < ActionController::TestCase
     assert_redirected_to list_path(assigns(:list))
   end
 
-  test "should show list" do
-    get :show, id: @list
-    assert_response :success
-  end
+  # test "should show list" do
+  #   get :show, id: @list
+  #   assert_response :success
+  # end
 
   test "should get edit" do
     get :edit, id: @list
     assert_response :success
   end
 
-  test "should update list" do
-    patch :update, id: @list, list: { completed: @list.completed, due: @list.due, title: @list.title, user_id: @list.user_id }
-    assert_redirected_to list_path(assigns(:list))
-  end
+  # test "should update list" do
+  #   patch :update, id: @list, list: { completed: @list.completed, due: @list.due, title: @list.title, user_id: @list.user_id }
+  #   assert_redirected_to list_path(assigns(:list))
+  # end
 
   test "should destroy list" do
     assert_difference('List.count', -1) do
